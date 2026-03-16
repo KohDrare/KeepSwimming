@@ -5,7 +5,8 @@
       "Bash(lsof:*)",
       "Bash(sleep:*)",
       "Bash(curl:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(wc:*)"
     ]
   }
 }

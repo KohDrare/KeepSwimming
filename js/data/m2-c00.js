@@ -60,7 +60,7 @@ window.MODULE_M2 = {
             "L'opérateur & donne l'adresse d'une variable : &c = l'adresse de c.",
             "write(1, &c, 1) — écrit 1 octet depuis l'adresse de c vers stdout.",
           ]},
-          { type: "reveal", label: "Voir la solution ft_putchar", code: "void ft_putchar(char c)\n{\n    write(1, &c, 1);\n}", explanation: "write veut une adresse, pas une valeur. &c donne l'adresse de c. On écrit 1 octet (un char) sur stdout (fd=1)." },
+          { type: "reveal", label: "Voir la solution ft_putchar", code: "#include <unistd.h>\n\nvoid ft_putchar(char c)\n{\n    write(1, &c, 1);\n}\n\n// --- Main de test (à retirer avant de rendre) ---\nint main(void)\n{\n    ft_putchar('H');\n    ft_putchar('i');\n    ft_putchar('\\n');\n    return (0);\n}", explanation: "write veut une adresse, pas une valeur. &c donne l'adresse de c. On écrit 1 octet (un char) sur stdout (fd=1).", compileCmd: "gcc -Wall -Wextra -Werror ft_putchar.c -o test && ./test", expectedOutput: "Hi" },
           { type: "key", value: "write() veut l'ADRESSE de ce qu'il doit écrire. Pour une string entre guillemets c'est automatique. Pour un char, il faut &c." },
           { type: "resources", items: [
             { icon: "📖", value: "man 2 write — write(int fd, const void *buf, size_t count)" },
@@ -114,7 +114,7 @@ window.MODULE_M2 = {
             "Initialise c = '0', boucle tant que c <= '9', incrémente c++ à chaque tour.",
             "N'oublie pas de convertir : pour passer d'un chiffre int à un char, utilise i + '0'.",
           ]},
-          { type: "reveal", label: "Voir la solution", code: "void ft_print_numbers(void)\n{\n    char c;\n\n    c = '0';\n    while (c <= '9')\n    {\n        write(1, &c, 1);\n        c++;\n    }\n}", explanation: "c commence à '0' (48) et va jusqu'à '9' (57). À chaque tour, on affiche le caractère et on passe au suivant. c++ sur un char incrémente sa valeur ASCII." },
+          { type: "reveal", label: "Voir la solution", code: "#include <unistd.h>\n\nvoid ft_print_numbers(void)\n{\n    char c;\n\n    c = '0';\n    while (c <= '9')\n    {\n        write(1, &c, 1);\n        c++;\n    }\n}\n\n// --- Main de test (à retirer avant de rendre) ---\nint main(void)\n{\n    ft_print_numbers();\n    write(1, \"\\n\", 1);\n    return (0);\n}", explanation: "c commence à '0' (48) et va jusqu'à '9' (57). À chaque tour, on affiche le caractère et on passe au suivant. c++ sur un char incrémente sa valeur ASCII.", compileCmd: "gcc -Wall -Wextra -Werror ft_print_numbers.c -o test && ./test", expectedOutput: "0123456789" },
           { type: "key", value: "TOUJOURS vérifier : est-ce que ma variable de boucle change à chaque tour ? Si non → boucle infinie." },
         ],
         quiz: {
@@ -138,7 +138,7 @@ window.MODULE_M2 = {
             "if (n < 0) → c'est négatif. else → c'est positif OU zéro.",
             "Piège classique du sujet : 0 n'est PAS négatif ! ft_is_negative(0) doit afficher 'P'.",
           ]},
-          { type: "reveal", label: "Voir la solution", code: "void ft_is_negative(int n)\n{\n    if (n < 0)\n        write(1, \"N\", 1);\n    else\n        write(1, \"P\", 1);\n}", explanation: "Si n < 0, c'est négatif → 'N'. Sinon (y compris 0), c'est positif ou nul → 'P'." },
+          { type: "reveal", label: "Voir la solution", code: "#include <unistd.h>\n\nvoid ft_is_negative(int n)\n{\n    if (n < 0)\n        write(1, \"N\", 1);\n    else\n        write(1, \"P\", 1);\n}\n\n// --- Main de test (à retirer avant de rendre) ---\nint main(void)\n{\n    ft_is_negative(42);\n    ft_is_negative(-19);\n    ft_is_negative(0);\n    write(1, \"\\n\", 1);\n    return (0);\n}", explanation: "Si n < 0, c'est négatif → 'N'. Sinon (y compris 0), c'est positif ou nul → 'P'.", compileCmd: "gcc -Wall -Wextra -Werror ft_is_negative.c -o test && ./test", expectedOutput: "PNP" },
           { type: "code", value: "// PIÈGE CLASSIQUE :\nif (n = 0)   // FAUX ! Ça ASSIGNE 0 à n !\nif (n == 0)  // CORRECT ! Ça COMPARE n à 0 !" },
           { type: "key", value: "= c'est ASSIGNER (mettre une valeur). == c'est COMPARER (tester si égal). Les confondre est le bug n°1 des débutants." },
         ],
@@ -164,13 +164,13 @@ window.MODULE_M2 = {
             "char c = 'a'; while (c <= 'z') — affiche c, puis c++.",
             "N'oublie pas le \\n final : write(1, \"\\n\", 1);",
           ]},
-          { type: "reveal", label: "Voir la solution ft_print_alphabet", code: "void ft_print_alphabet(void)\n{\n    char c;\n\n    c = 'a';\n    while (c <= 'z')\n    {\n        write(1, &c, 1);\n        c++;\n    }\n    write(1, \"\\n\", 1);\n}", explanation: "c commence à 'a' (97) et va jusqu'à 'z' (122). c++ passe au caractère suivant car les lettres sont consécutives en ASCII." },
+          { type: "reveal", label: "Voir la solution ft_print_alphabet", code: "#include <unistd.h>\n\nvoid ft_print_alphabet(void)\n{\n    char c;\n\n    c = 'a';\n    while (c <= 'z')\n    {\n        write(1, &c, 1);\n        c++;\n    }\n    write(1, \"\\n\", 1);\n}\n\n// --- Main de test (à retirer avant de rendre) ---\nint main(void)\n{\n    ft_print_alphabet();\n    return (0);\n}", explanation: "c commence à 'a' (97) et va jusqu'à 'z' (122). c++ passe au caractère suivant car les lettres sont consécutives en ASCII.", compileCmd: "gcc -Wall -Wextra -Werror ft_print_alphabet.c -o test && ./test", expectedOutput: "abcdefghijklmnopqrstuvwxyz" },
           { type: "exercise", title: "ft_print_reverse_alphabet", subject: "Même chose mais de 'z' à 'a'.", prototype: "void ft_print_reverse_alphabet(void);" },
           { type: "hint", hints: [
             "Même principe mais à l'envers : commence par 'z', descend jusqu'à 'a'.",
             "c = 'z'; while (c >= 'a') { ... c--; }",
           ]},
-          { type: "reveal", label: "Voir la solution ft_print_reverse_alphabet", code: "void ft_print_reverse_alphabet(void)\n{\n    char c;\n\n    c = 'z';\n    while (c >= 'a')\n    {\n        write(1, &c, 1);\n        c--;\n    }\n    write(1, \"\\n\", 1);\n}", explanation: "Pareil mais avec c-- au lieu de c++. On part de 'z' (122) et on descend jusqu'à 'a' (97)." },
+          { type: "reveal", label: "Voir la solution ft_print_reverse_alphabet", code: "#include <unistd.h>\n\nvoid ft_print_reverse_alphabet(void)\n{\n    char c;\n\n    c = 'z';\n    while (c >= 'a')\n    {\n        write(1, &c, 1);\n        c--;\n    }\n    write(1, \"\\n\", 1);\n}\n\n// --- Main de test (à retirer avant de rendre) ---\nint main(void)\n{\n    ft_print_reverse_alphabet();\n    return (0);\n}", explanation: "Pareil mais avec c-- au lieu de c++. On part de 'z' (122) et on descend jusqu'à 'a' (97).", compileCmd: "gcc -Wall -Wextra -Werror ft_print_reverse_alphabet.c -o test && ./test", expectedOutput: "zyxwvutsrqponmlkjihgfedcba" },
           { type: "key", value: "Les chars sont des nombres consécutifs en ASCII. 'a'+1='b', '0'+1='1'. Tu peux les parcourir avec while comme n'importe quel nombre." },
         ],
         quiz: {
@@ -195,7 +195,7 @@ window.MODULE_M2 = {
             "3 boucles imbriquées : a de '0' à '7', b de a+1 à '8', c de b+1 à '9'.",
             "Pour le séparateur : affiche ', ' sauf après la dernière combinaison (quand a='7', b='8', c='9').",
           ]},
-          { type: "reveal", label: "Voir la solution", code: "void ft_print_comb(void)\n{\n    char a;\n    char b;\n    char c;\n\n    a = '0';\n    while (a <= '7')\n    {\n        b = a + 1;\n        while (b <= '8')\n        {\n            c = b + 1;\n            while (c <= '9')\n            {\n                write(1, &a, 1);\n                write(1, &b, 1);\n                write(1, &c, 1);\n                if (a != '7' || b != '8' || c != '9')\n                    write(1, \", \", 2);\n                c++;\n            }\n            b++;\n        }\n        a++;\n    }\n    write(1, \"\\n\", 1);\n}", explanation: "b = a + 1 garantit que b > a. c = b + 1 garantit que c > b. Donc on a toujours a < b < c = ordre croissant. Le nombre total est C(10,3) = 120 combinaisons." },
+          { type: "reveal", label: "Voir la solution", code: "#include <unistd.h>\n\nvoid ft_print_comb(void)\n{\n    char a;\n    char b;\n    char c;\n\n    a = '0';\n    while (a <= '7')\n    {\n        b = a + 1;\n        while (b <= '8')\n        {\n            c = b + 1;\n            while (c <= '9')\n            {\n                write(1, &a, 1);\n                write(1, &b, 1);\n                write(1, &c, 1);\n                if (a != '7' || b != '8' || c != '9')\n                    write(1, \", \", 2);\n                c++;\n            }\n            b++;\n        }\n        a++;\n    }\n    write(1, \"\\n\", 1);\n}\n\n// --- Main de test (à retirer avant de rendre) ---\nint main(void)\n{\n    ft_print_comb();\n    return (0);\n}", explanation: "b = a + 1 garantit que b > a. c = b + 1 garantit que c > b. Donc on a toujours a < b < c = ordre croissant. Le nombre total est C(10,3) = 120 combinaisons.", compileCmd: "gcc -Wall -Wextra -Werror ft_print_comb.c -o test && ./test", expectedOutput: "012, 013, 014, ..., 789 (120 combinaisons)" },
           { type: "key", value: "3 boucles imbriquées = combinaisons de 3 éléments. Le nombre total est C(10,3) = 120 combinaisons. Chaque boucle interne se réinitialise à chaque tour de l'externe." },
         ],
         quiz: {
@@ -225,7 +225,7 @@ window.MODULE_M2 = {
             "Pour afficher un chiffre : nb % 10 + '0' convertit un chiffre (0-9) en son caractère ASCII ('0'-'9').",
             "Cas spécial -2147483648 : nb = -nb overflow car 2147483648 > INT_MAX (2147483647). Affiche-le directement comme string.",
           ]},
-          { type: "reveal", label: "Voir la solution", code: "void ft_putnbr(int nb)\n{\n    if (nb == -2147483648)\n    {\n        write(1, \"-2147483648\", 11);\n        return ;\n    }\n    if (nb < 0)\n    {\n        write(1, \"-\", 1);\n        nb = -nb;\n    }\n    if (nb >= 10)\n        ft_putnbr(nb / 10);\n    {\n        char c = nb % 10 + '0';\n        write(1, &c, 1);\n    }\n}", explanation: "La récursion traite les chiffres de gauche à droite. nb/10 enlève le dernier chiffre, nb%10 l'isole. Le cas -2147483648 est traité à part car -(-2147483648) overflow en int." },
+          { type: "reveal", label: "Voir la solution", code: "#include <unistd.h>\n\nvoid ft_putnbr(int nb)\n{\n    if (nb == -2147483648)\n    {\n        write(1, \"-2147483648\", 11);\n        return ;\n    }\n    if (nb < 0)\n    {\n        write(1, \"-\", 1);\n        nb = -nb;\n    }\n    if (nb >= 10)\n        ft_putnbr(nb / 10);\n    {\n        char c = nb % 10 + '0';\n        write(1, &c, 1);\n    }\n}\n\n// --- Main de test (à retirer avant de rendre) ---\nint main(void)\n{\n    ft_putnbr(42);\n    write(1, \"\\n\", 1);\n    ft_putnbr(0);\n    write(1, \"\\n\", 1);\n    ft_putnbr(-42);\n    write(1, \"\\n\", 1);\n    ft_putnbr(-2147483648);\n    write(1, \"\\n\", 1);\n    return (0);\n}", explanation: "La récursion traite les chiffres de gauche à droite. nb/10 enlève le dernier chiffre, nb%10 l'isole. Le cas -2147483648 est traité à part car -(-2147483648) overflow en int.", compileCmd: "gcc -Wall -Wextra -Werror ft_putnbr.c -o test && ./test", expectedOutput: "42\\n0\\n-42\\n-2147483648" },
           { type: "key", value: "Cas spécial -2147483648 : nb = -nb causerait un overflow car 2147483648 > INT_MAX (2147483647). On l'affiche directement comme string." },
           { type: "resources", items: [
             { icon: "📖", value: "man 3 printf — la version standard fait tout ça automatiquement" },

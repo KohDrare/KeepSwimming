@@ -104,7 +104,7 @@ function HintSystem({ hints }) {
 }
 
 // --- RevealSection : solution cachée ---
-function RevealSection({ label, code, explanation }) {
+function RevealSection({ label, code, explanation, compileCmd, expectedOutput, isProgram }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -138,6 +138,14 @@ function RevealSection({ label, code, explanation }) {
           <CodeBlock code={code} />
           {explanation && (
             <div style={{ fontSize: 13, lineHeight: 1.7, opacity: 0.85, marginTop: 8 }}>{explanation}</div>
+          )}
+          {compileCmd && (
+            <div style={{ fontSize: 12, marginTop: 10, padding: "10px 12px", background: "rgba(16,185,129,0.06)", borderRadius: 8, border: "1px solid rgba(16,185,129,0.15)", lineHeight: 1.8 }}>
+              <div style={{ fontFamily: "'SF Mono', 'Fira Code', monospace", fontSize: 11 }}>💻 {compileCmd}</div>
+              {expectedOutput && <div style={{ marginTop: 4 }}>📤 Output attendu : <code style={{ background: "rgba(255,255,255,0.08)", padding: "2px 6px", borderRadius: 4 }}>{expectedOutput}</code></div>}
+              {!isProgram && <div style={{ marginTop: 4, opacity: 0.7, fontSize: 11 }}>⚠️ Avant de rendre : retire le main() ou commente-le avec /* */</div>}
+              {isProgram && <div style={{ marginTop: 4, opacity: 0.7, fontSize: 11 }}>📌 C06 : le main() fait partie du programme — garde-le !</div>}
+            </div>
           )}
         </div>
       )}
@@ -592,7 +600,7 @@ function LessonView({ lesson, moduleColor, moduleTag, allLessons, currentIndex, 
     // V2 block types
     if (block.type === "exercise") return <ExerciseSubject key={i} title={block.title} subject={block.subject} prototype={block.prototype} />;
     if (block.type === "hint") return <HintSystem key={i} hints={block.hints} />;
-    if (block.type === "reveal") return <RevealSection key={i} label={block.label} code={block.code} explanation={block.explanation} />;
+    if (block.type === "reveal") return <RevealSection key={i} label={block.label} code={block.code} explanation={block.explanation} compileCmd={block.compileCmd} expectedOutput={block.expectedOutput} isProgram={block.isProgram} />;
     if (block.type === "resources") return <ResourcesSection key={i} items={block.items} />;
 
     // Visuals
