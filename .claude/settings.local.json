@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(lsof:*)",
+      "Bash(sleep:*)",
+      "Bash(curl:*)",
+      "Bash(node:*)"
     ]
   }
 }
