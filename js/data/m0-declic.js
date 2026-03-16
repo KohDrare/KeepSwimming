@@ -1,6 +1,6 @@
 // Module 0 — Le Déclic : fondations mentales
 window.MODULE_M0 = {
-  id: "m0", title: "Le Déclic", icon: "\u{1F4A1}",
+  id: "m0", title: "Le Déclic", icon: "💡",
   description: "Comprendre POURQUOI le code existe et COMMENT un ordi pense",
   color: "#F59E0B",
   tag: null,

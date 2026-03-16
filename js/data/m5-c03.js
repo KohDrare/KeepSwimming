@@ -1,7 +1,7 @@
 // Module 5 — C03 : Comparer & Concaténer
 // Exercices couverts : ft_strcmp, ft_strncmp, ft_strcat, ft_strncat, ft_strstr, ft_strlcat
 window.MODULE_M5 = {
-  id: "m5", title: "C03 : Comparer & Concaténer", icon: "\u{1F517}",
+  id: "m5", title: "C03 : Comparer & Concaténer", icon: "🔗",
   description: "ft_strcmp, ft_strcat, ft_strstr — comparer, coller, chercher des strings",
   color: "#F97316",
   tag: "C03",

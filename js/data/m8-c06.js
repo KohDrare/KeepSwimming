@@ -1,7 +1,7 @@
 // Module 8 — C06 : Programmes (argc/argv)
 // Exercices couverts : ft_print_program_name, ft_print_params, ft_rev_params, ft_sort_params
 window.MODULE_M8 = {
-  id: "m8", title: "C06 : Programmes (argc/argv)", icon: "\u{1F4DF}",
+  id: "m8", title: "C06 : Programmes (argc/argv)", icon: "📟",
   description: "Recevoir des arguments dans un programme — argc, argv, tri de strings",
   color: "#06B6D4",
   tag: "C06",

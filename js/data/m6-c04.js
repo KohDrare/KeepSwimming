@@ -1,7 +1,7 @@
 // Module 6 — C04 : Nombres & Bases
 // Exercices couverts : ft_strlen, ft_putstr, ft_putnbr, ft_atoi, ft_putnbr_base, ft_atoi_base
 window.MODULE_M6 = {
-  id: "m6", title: "C04 : Nombres & Bases", icon: "\u{1F522}",
+  id: "m6", title: "C04 : Nombres & Bases", icon: "🔢",
   description: "ft_atoi, ft_putnbr, bases numériques — convertir entre strings et nombres",
   color: "#8B5CF6",
   tag: "C04",

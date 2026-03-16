@@ -1,6 +1,6 @@
 // Module 1 — Shell & Unix
 window.MODULE_M1 = {
-  id: "m1", title: "Shell & Unix", icon: "\u{1F41A}",
+  id: "m1", title: "Shell & Unix", icon: "🐚",
   description: "Les commandes essentielles pour survivre dans le terminal",
   color: "#10B981",
   tag: "Shell",

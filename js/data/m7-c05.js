@@ -2,7 +2,7 @@
 // Exercices couverts : ft_iterative_factorial, ft_recursive_factorial,
 // ft_iterative_power, ft_recursive_power, ft_fibonacci, ft_sqrt, ft_is_prime, ft_find_next_prime
 window.MODULE_M7 = {
-  id: "m7", title: "C05 : Récursion & Maths", icon: "\u{1F504}",
+  id: "m7", title: "C05 : Récursion & Maths", icon: "🔄",
   description: "Factorielle, puissance, fibonacci, nombres premiers — récursion et itération",
   color: "#EF4444",
   tag: "C05",

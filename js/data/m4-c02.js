@@ -3,7 +3,7 @@
 // ft_str_is_lowercase, ft_str_is_uppercase, ft_str_is_printable,
 // ft_strupcase, ft_strlowcase, ft_strcapitalize, ft_strlcpy, ft_putstr_non_printable
 window.MODULE_M4 = {
-  id: "m4", title: "C02 : Manipulation de strings", icon: "\u{1F4DD}",
+  id: "m4", title: "C02 : Manipulation de strings", icon: "📝",
   description: "Copier, vérifier, transformer des strings — ft_strcpy, ft_str_is_*, ft_strupcase",
   color: "#14B8A6",
   tag: "C02",

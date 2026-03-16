@@ -2,7 +2,7 @@
 // Exercices couverts : ft_putchar, ft_print_alphabet, ft_print_reverse_alphabet,
 // ft_print_numbers, ft_is_negative, ft_print_comb, ft_putnbr
 window.MODULE_M2 = {
-  id: "m2", title: "C00 : Premiers pas en C", icon: "\u{1F9F1}",
+  id: "m2", title: "C00 : Premiers pas en C", icon: "🧱",
   description: "write(), boucles, ASCII — les fondations du C à 42",
   color: "#3B82F6",
   tag: "C00",

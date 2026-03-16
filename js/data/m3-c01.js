@@ -2,7 +2,7 @@
 // Exercices couverts : ft_ft, ft_ultimate_ft, ft_swap, ft_div_mod,
 // ft_ultimate_div_mod, ft_putstr, ft_strlen, ft_rev_int_tab, ft_sort_int_tab
 window.MODULE_M3 = {
-  id: "m3", title: "C01 : Pointeurs", icon: "\u{1F517}",
+  id: "m3", title: "C01 : Pointeurs", icon: "🔗",
   description: "Adresses mémoire, pointeurs, passage par adresse — le concept clé de la Piscine",
   color: "#EC4899",
   tag: "C01",
