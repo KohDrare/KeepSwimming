@@ -477,6 +477,15 @@ function Quiz({ quiz, lessonId, onComplete }) {
   const [sel, setSel] = useState(null);
   const [show, setShow] = useState(false);
 
+  if (!quiz || !quiz.options || !Array.isArray(quiz.options)) {
+    return (
+      <div style={{ background: "rgba(239,68,68,0.08)", borderRadius: 14, padding: "16px", marginTop: 20, border: "1px solid rgba(239,68,68,0.25)" }}>
+        <div style={{ fontSize: 14, fontWeight: 600, color: "#EF4444" }}>Quiz non disponible</div>
+        <div style={{ fontSize: 12, opacity: 0.6, marginTop: 4 }}>Ce quiz est temporairement indisponible (données manquantes).</div>
+      </div>
+    );
+  }
+
   const pick = i => {
     if (show) return;
     setSel(i);
@@ -602,6 +611,15 @@ function LessonView({ lesson, moduleColor, moduleTag, allLessons, currentIndex, 
     if (block.type === "hint") return <HintSystem key={i} hints={block.hints} />;
     if (block.type === "reveal") return <RevealSection key={i} label={block.label} code={block.code} explanation={block.explanation} compileCmd={block.compileCmd} expectedOutput={block.expectedOutput} isProgram={block.isProgram} />;
     if (block.type === "resources") return <ResourcesSection key={i} items={block.items} />;
+    if (block.type === "challenge") return (
+      <div key={i} style={{ background: "rgba(249,115,22,0.06)", border: "2px solid rgba(249,115,22,0.3)", borderRadius: 12, padding: "14px 16px", marginBottom: 12 }}>
+        <div style={{ fontSize: 11, fontWeight: 700, color: "#F97316", marginBottom: 6, textTransform: "uppercase", letterSpacing: 1.5 }}>🏋️ Essaie d'abord !</div>
+        <p style={{ fontSize: 13, lineHeight: 1.7, margin: "0 0 8px", fontWeight: 600, opacity: 0.9 }}>Avant de voir la solution, essaie par toi-meme.</p>
+        <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, lineHeight: 1.8, opacity: 0.85 }}>
+          {block.questions.map((q, j) => <li key={j}>{q}</li>)}
+        </ul>
+      </div>
+    );
 
     // Visuals
     if (block.type === "visual") {

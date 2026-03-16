@@ -111,8 +111,9 @@ window.MODULE_M4 = {
         ],
         quiz: {
           type: "truefalse",
-          statement: "Le caractère tabulation (\\t, ASCII 9) est considéré comme imprimable par ft_str_is_printable.",
-          correct: false,
+          question: "Le caractère tabulation (\\t, ASCII 9) est considéré comme imprimable par ft_str_is_printable.",
+          options: ["Vrai", "Faux"],
+          correct: 1,
           explanation: "\\t a la valeur ASCII 9. Les caractères imprimables vont de 32 à 126. 9 < 32, donc \\t n'est PAS imprimable. Seul l'espace (32) et au-dessus sont imprimables.",
         },
       },
@@ -231,8 +232,9 @@ window.MODULE_M4 = {
         ],
         quiz: {
           type: "truefalse",
-          statement: "Dans ft_strncpy, si src fait 3 caractères et n vaut 10, les 7 positions restantes de dest sont remplies avec des \\0.",
-          correct: true,
+          question: "Dans ft_strncpy, si src fait 3 caractères et n vaut 10, les 7 positions restantes de dest sont remplies avec des \\0.",
+          options: ["Vrai", "Faux"],
+          correct: 0,
           explanation: "C'est le comportement standard de strncpy : si src est plus courte que n, le reste est rempli de \\0. C'est la deuxième boucle while (i < n) dans l'implémentation.",
         },
       },

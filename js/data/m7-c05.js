@@ -51,7 +51,7 @@ window.MODULE_M7 = {
             "Cas spéciaux : nb < 0 → return 0. nb == 0 → return 1 (par convention).",
             "La boucle : while (nb > 0) { result *= nb; nb--; }",
           ]},
-          { type: "reveal", label: "Voir la solution itérative", code: "#include <unistd.h>\n\nvoid ft_putchar(char c)\n{\n    write(1, &c, 1);\n}\n\nvoid ft_putnbr(int nb)\n{\n    if (nb < 0)\n    {\n        ft_putchar('-');\n        nb = -nb;\n    }\n    if (nb >= 10)\n        ft_putnbr(nb / 10);\n    ft_putchar(nb % 10 + '0');\n}\n\nint ft_iterative_factorial(int nb)\n{\n    int result;\n\n    if (nb < 0)\n        return (0);\n    result = 1;\n    while (nb > 0)\n    {\n        result *= nb;\n        nb--;\n    }\n    return (result);\n}\n\n// --- Main de test (à retirer avant de rendre) ---\nint main(void)\n{\n    ft_putnbr(ft_iterative_factorial(5));\n    write(1, \"\\n\", 1);\n    ft_putnbr(ft_iterative_factorial(0));\n    write(1, \"\\n\", 1);\n    ft_putnbr(ft_iterative_factorial(-3));\n    write(1, \"\\n\", 1);\n    return (0);\n}", compileCmd: "gcc -Wall -Wextra -Werror ft_iterative_factorial.c -o test && ./test", expectedOutput: "120\\n1\\n0", explanation: "On multiplie result par nb, puis on décrémente nb. Quand nb = 0, la boucle s'arrête. result contient n!." },
+          { type: "reveal", label: "Voir la solution itérative", code: "#include <unistd.h>\n\nvoid ft_putchar(char c)\n{\n    write(1, &c, 1);\n}\n\nvoid ft_putnbr(int nb)\n{\n    if (nb < 0)\n    {\n        ft_putchar('-');\n        nb = -nb;\n    }\n    if (nb >= 10)\n        ft_putnbr(nb / 10);\n    ft_putchar(nb % 10 + '0');\n}\n\nint ft_iterative_factorial(int nb)\n{\n    int result;\n\n    // Factorielle d'un nombre negatif n'existe pas\n    if (nb < 0)\n        return (0);\n    result = 1; // Element neutre de la multiplication\n    // Multiplie result par nb, nb-1, nb-2... jusqu'a 1\n    while (nb > 0)\n    {\n        result *= nb;\n        nb--;\n    }\n    return (result); // Contient n! (si nb == 0, result reste 1)\n}\n\n// --- Main de test (à retirer avant de rendre) ---\nint main(void)\n{\n    ft_putnbr(ft_iterative_factorial(5)); // Attendu : 120 (5! = 5*4*3*2*1)\n    write(1, \"\\n\", 1);\n    ft_putnbr(ft_iterative_factorial(0)); // Attendu : 1 (0! = 1 par convention)\n    write(1, \"\\n\", 1);\n    ft_putnbr(ft_iterative_factorial(-3)); // Attendu : 0 (negatif)\n    write(1, \"\\n\", 1);\n    return (0);\n}", compileCmd: "gcc -Wall -Wextra -Werror ft_iterative_factorial.c -o test && ./test", expectedOutput: "120\\n1\\n0", explanation: "On multiplie result par nb, puis on décrémente nb. Quand nb = 0, la boucle s'arrête. result contient n!." },
           { type: "exercise", title: "ft_recursive_factorial", subject: "Même chose mais avec la récursion (la fonction s'appelle elle-même). Retourne 0 si nb est négatif. 0! = 1.", prototype: "int ft_recursive_factorial(int nb);" },
           { type: "hint", hints: [
             "Cas de base : nb <= 1 → retourne 1 (0! = 1! = 1).",
@@ -97,8 +97,9 @@ window.MODULE_M7 = {
         ],
         quiz: {
           type: "truefalse",
-          statement: "ft_recursive_power(0, 0) retourne 0.",
-          correct: false,
+          question: "ft_recursive_power(0, 0) retourne 0.",
+          options: ["Vrai", "Faux"],
+          correct: 1,
           explanation: "0^0 = 1 par convention mathématique (et c'est le cas de base : power == 0 → return 1). Ce n'est pas spécifique à nb = 0.",
         },
       },

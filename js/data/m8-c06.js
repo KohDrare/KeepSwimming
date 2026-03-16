@@ -55,8 +55,9 @@ window.MODULE_M8 = {
         ],
         quiz: {
           type: "truefalse",
-          statement: "Si tu compiles avec 'gcc -o test main.c' et tu lances './test', argv[0] vaut \"test\" (sans le ./).",
-          correct: false,
+          question: "Si tu compiles avec 'gcc -o test main.c' et tu lances './test', argv[0] vaut \"test\" (sans le ./).",
+          options: ["Vrai", "Faux"],
+          correct: 1,
           explanation: "argv[0] contient EXACTEMENT ce que tu as tapé. Si tu tapes './test', argv[0] = \"./test\" avec le ./. Si tu tapes juste 'test', argv[0] = \"test\".",
         },
       },

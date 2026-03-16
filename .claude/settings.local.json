@@ -6,7 +6,8 @@
       "Bash(sleep:*)",
       "Bash(curl:*)",
       "Bash(node:*)",
-      "Bash(wc:*)"
+      "Bash(wc:*)",
+      "Bash(grep:*)"
     ]
   }
 }
