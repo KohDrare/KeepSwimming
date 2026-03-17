@@ -7,7 +7,13 @@
       "Bash(curl:*)",
       "Bash(node:*)",
       "Bash(wc:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(grep -A 1 'type: \"\"\"\"reveal\"\"\"\"' *.js)",
+      "Bash(for file:*)",
+      "Bash(do echo:*)",
+      "Read(//Users/koh_drare/DEV/KeepSwimming/**)",
+      "Bash(done)",
+      "Bash(for f:*)"
     ]
   }
 }
